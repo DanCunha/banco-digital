@@ -1,7 +1,9 @@
 package br.com.bancodigital.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+import br.com.bancodigital.domain.Address;
+import br.com.bancodigital.domain.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,19 +25,29 @@ public class CustomerDTO {
 	
 	private String email;
 	
-	private Date dateBirth;
+	private LocalDate dateBirth;
 	
 	private String cpf;
 	
-	private String cep;
+	private AddressDTO address;
+
+	public CustomerDTO(Customer customer) {
+		this.id = customer.getId();
+		this.name = customer.getName();
+		this.lastName = customer.getLastName();
+		this.email = customer.getEmail();
+		this.dateBirth = customer.getDateBirth();
+		this.cpf = customer.getCpf();
+	}
 	
-	private String street;
+	public CustomerDTO(Customer customer, Address address) {
+		this.id = customer.getId();
+		this.name = customer.getName();
+		this.lastName = customer.getLastName();
+		this.email = customer.getEmail();
+		this.dateBirth = customer.getDateBirth();
+		this.cpf = customer.getCpf();
+		this.address = new AddressDTO(address);
+	}
 	
-	private String neighborhood;
-	
-	private String complement;
-	
-	private String city;
-	
-	private String state;
 }

@@ -1,11 +1,14 @@
 package br.com.bancodigital.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,19 +34,20 @@ public class Customer {
 	
 	private String email;
 	
-	private Date dateBirth;
+	private LocalDate dateBirth;
 	
 	private String cpf;
 	
-	private String cep;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
+
+	public Customer(String name, String lastName, String email, LocalDate dateBirth, String cpf) {
+		this.name = name;
+		this.lastName = lastName;
+		this.email = email;
+		this.dateBirth = dateBirth;
+		this.cpf = cpf;
+	}
 	
-	private String street;
-	
-	private String neighborhood;
-	
-	private String complement;
-	
-	private String city;
-	
-	private String state;
 }
