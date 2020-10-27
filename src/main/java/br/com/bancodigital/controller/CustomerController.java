@@ -61,7 +61,7 @@ public class CustomerController {
 	private AccountRepository accountRepository;
 	
 	@PostMapping
-	@ApiOperation(value = "Create a new customer", response = CustomerDTO.class)
+	@ApiOperation(value = "Create a new customer - Step 1", response = CustomerDTO.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successfully created a new customer"),
             @ApiResponse(code = 400, message = "Validation error")
@@ -79,7 +79,7 @@ public class CustomerController {
 	
 	@PostMapping("/address/{customerId}")
 	@Transactional
-	@ApiOperation(value = "Create address", response = CustomerDTO.class)
+	@ApiOperation(value = "Create address - Step 2", response = CustomerDTO.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created a new customer"),
 			@ApiResponse(code = 400, message = "Validation error") 
@@ -102,7 +102,7 @@ public class CustomerController {
 	
 	@PostMapping("/upload/{customerId}")
 	@Transactional
-	@ApiOperation(value = "Upload cpf image", response = CustomerDTO.class)
+	@ApiOperation(value = "Upload cpf image - Step 3", response = CustomerDTO.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created a new customer"),
 			@ApiResponse(code = 400, message = "Validation error") 
@@ -125,7 +125,7 @@ public class CustomerController {
 	}
 	 
 	@GetMapping("/{id}")
-	@ApiOperation(value = "Find customer by id", response = CustomerDTO.class)
+	@ApiOperation(value = "Find customer by id - Step 4", response = CustomerDTO.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Found customer"),
             @ApiResponse(code = 404, message = "Not found")
@@ -141,7 +141,7 @@ public class CustomerController {
 	@PostMapping("/proposal/{customerId}")
 	@Async
 	@Transactional
-	@ApiOperation(value = "Accept proposal to create account", response = CustomerDTO.class)
+	@ApiOperation(value = "Accept proposal to create account - Step 5", response = CustomerDTO.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created a new account"),
 			@ApiResponse(code = 400, message = "Validation error") 

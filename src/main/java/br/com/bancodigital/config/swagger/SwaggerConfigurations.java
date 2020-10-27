@@ -23,6 +23,7 @@ public class SwaggerConfigurations {
 						.description("Header para token JWT")
 						.modelRef(new ModelRef("string"))
 						.parameterType("header")
+						.description("Banco Digital API")
 						.required(false)
 						.build()));
 	}
